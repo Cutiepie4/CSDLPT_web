@@ -8,6 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ThongKe {
-	private String tenCN;
+	private String tenCN, diaChi;
 	private int tongSoVe, tongTienBanVe;
 }

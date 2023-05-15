@@ -17,6 +17,7 @@ function Thongke(props) {
                     <thead className="table-dark">
                         <tr>
                             <th>Tên Chi Nhánh</th>
+                            <th>Địa chỉ chi nhánh</th>
                             <th>Tổng số vé</th>
                             <th>Tổng tiền vé (vnd)</th>
                         </tr>
@@ -26,6 +27,7 @@ function Thongke(props) {
                         {thongKe.map((item, index) => (
                             <tr key={index}>
                                 <td>{item.tenCN}</td>
+                                <td>{item.diaChi}</td>
                                 <td>{item.tongSoVe}</td>
                                 <td>{item.tongTienBanVe}</td>
                             </tr>

@@ -33,7 +33,6 @@ public class Controller {
 	public void addNV (@RequestBody ChuyenBay chuyenBay) {
 		DAO dao = new DAO();
 		dao.addCB(chuyenBay);
-		System.out.println(chuyenBay);
 	}
 	
 	@GetMapping("/dsmb")

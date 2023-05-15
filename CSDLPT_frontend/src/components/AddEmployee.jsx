@@ -17,7 +17,7 @@ function AddEmployee(props) {
     }, [])
 
     const addE = () => {
-        if (listE.some(item => item.maNV == employee.maNV)) setMsg('Id da ton tai.');
+        if (listE.some(item => item.maNV === employee.maNV)) setMsg('Id da ton tai.');
         else {
             axios.post('/api/dsnv/new', employee);
             setMsg('Them thanh cong');
@@ -28,13 +28,13 @@ function AddEmployee(props) {
         <div className='container'>
             <h1>Thêm nhân viên</h1>
             <div>
-                <input type="text" placeholder='Mã nhân viên' onChange={e => setEmployee({ ...employee, maNV: e.target.value })} />
+                <input type="text" placeholder='Mã nhân viên' onChange={e => setEmployee({ ...employee, maNV: e.target.value })} required />
             </div>
             <div>
-                <input type="text" placeholder='Tên nhân viên' onChange={e => setEmployee({ ...employee, tenNV: e.target.value })} />
+                <input type="text" placeholder='Tên nhân viên' onChange={e => setEmployee({ ...employee, tenNV: e.target.value })} required />
             </div>
             <div>
-                <select onChange={(e) => { setEmployee({ ...employee, maCN: e.target.value }) }}>
+                <select onChange={(e) => { setEmployee({ ...employee, maCN: e.target.value }) }} required>
                     <option disabled selected>Chọn chi nhánh</option>
                     {branch.map((branch, index) => (
                         <option key={index} value={branch.maCN}>
@@ -44,13 +44,13 @@ function AddEmployee(props) {
                 </select>
             </div>
             <div>
-                <input type="date" placeholder='Ngày sinh' onChange={e => setEmployee({ ...employee, ngaySinh: e.target.value })} />
+                <input type="date" placeholder='Ngày sinh' onChange={e => setEmployee({ ...employee, ngaySinh: e.target.value })} required />
             </div>
             <div>
-                <input type="number" placeholder='Số điện thoại' onChange={e => setEmployee({ ...employee, sdt: e.target.value })} />
+                <input type="number" placeholder='Số điện thoại' onChange={e => setEmployee({ ...employee, sdt: e.target.value })} required />
             </div>
             <div>
-                <input type="text" placeholder='Chức Vụ' onChange={e => setEmployee({ ...employee, chucVu: e.target.value })} />
+                <input type="text" placeholder='Chức Vụ' onChange={e => setEmployee({ ...employee, chucVu: e.target.value })} required />
             </div>
 
             <div>

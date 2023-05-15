@@ -24,13 +24,13 @@ public class DAO {
 	private static final String SELECT_ALL_CN = "SELECT * FROM ChiNhanh";
 	private static final String INSERT_NV = "INSERT INTO NhanVien(maNV, tenNV, maCN, ngaySinh, sdt, chucVu) VALUES(?, ?, ?, ?, ?, ?)";
 	private static final String INSERT_CB = "INSERT INTO ChuyenBay(maCB, maMB, sanBayXuatPhat, sanBayDich, thoiGianBatDau, thoiGianKetThuc, slChoNgoiConLai) VALUES(?, ?, ?, ?, ?, ?, ?)";
-	private static final String THONGKE = "SELECT ChiNhanh.TenCN, COUNT(Ve.MaV) AS Tong_so_ve, SUM(Ve.GiaVe) AS Tong_tien_ve\r\n"
+	private static final String THONGKE = "SELECT ChiNhanh.TenCN, ChiNhanh.DiaChi, COUNT(Ve.MaV) AS Tong_so_ve, SUM(Ve.GiaVe) AS Tong_tien_ve\r\n"
 			+ "FROM ChiNhanh\r\n"
 			+ "	INNER JOIN NhanVien\r\n"
 			+ "		ON ChiNhanh.MaCN = NhanVien.MaCN\r\n"
 			+ "	INNER JOIN Ve\r\n"
 			+ "		ON Ve.MaNV = NhanVien.MaNV\r\n"
-			+ "GROUP BY ChiNhanh.MaCN, ChiNhanh.TenCN\r\n"
+			+ "GROUP BY ChiNhanh.MaCN, ChiNhanh.TenCN, ChiNhanh.DiaChi\r\n"
 			+ "ORDER BY Tong_tien_ve DESC";
 //	private static final String SELECT_BY_ID = "SELECT * FROM book WHERE bookcode = ?";
 //	private static final String INSERT = "INSERT INTO book VALUES(?, ?, ?, ?, ?)";
@@ -171,7 +171,7 @@ public class DAO {
 			PreparedStatement preparedStatement = connection.prepareStatement(THONGKE);
 			ResultSet rs = preparedStatement.executeQuery();
 			while (rs.next()) {
-				list.add(new ThongKe(rs.getString(1), rs.getInt(2), rs.getInt(3)));
+				list.add(new ThongKe(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4)));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -15,8 +15,7 @@ function AddFlight(props) {
     }, [])
 
     const addFlight = () => {
-        console.log(flight)
-        axios.post('/api/dscb/new', flight).then(res => { });
+        axios.post('/api/dscb/new', flight);
     }
 
     return (
